@@ -1,53 +1,74 @@
 'use strict';
 
-// let money =  prompt("Ваш бюджет на месяц?"),
-//     time = prompt("Введите количество дней для затрат");
+let money =  +prompt("Ваш бюджет на месяц?", ''),
+    time = prompt("Введите дату в формате YYYY-MM-DD", '');
 
-// let appData = {
-//   budget: money,
-//   timeData: time,
-//   expenses: {},
-//   optionalExpenses: {},
-//   income: [],
-//   savings: false
-// };
+let appData = {
+  budget: money,
+  timeData: time,
+  expenses: {},
+  optionalExpenses: {},
+  income: [],
+  savings: false
+};
 
-// let answerOne = ("Введите обязательную статью расходов в этом месяце", ''),
-//   answerTwo = ("Во сколько обойдется?", ''),
-//   answerTree = ("Введите обязательную статью расходов в этом месяце", ''),
-//   answerFour = ("Во сколько обойдется?", '');
+for (let i = 1; i < 2; i++) {
+  let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
+      b = prompt("Во сколько обойдется?", '');
 
-// appData.expenses.answerOne = answerTwo;
-// appData.expenses.answerTree = answerFour;
+  if ( typeof(a)==='string' && typeof(a) != null && typeof(b) != null 
+       && a != "" && b != "" && a.length < 50) {
+    console.log('done');
+    appData.expenses[a] = b;
+  } else {
+    console.log('bad result');
+    i--;
+  }
+}
 
-// alert(appData.budget / appData.timeData);
+appData.moneyPerDay = appData.budget / 30;
 
-let num = 50;
+alert('Ежедневный бюджет: ' + appData.moneyPerDay);
 
-if (num < 49) {
-  console.log('Wrong!');
-} else if (num > 100) {
-  console.log('Too more!');
+if (appData.moneyPerDay < 100) {
+  console.log('Минимальный уровень достатка');
+} else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+  console.log('Средний уровень достатка');
+} else if (appData.moneyPerDay > 2000) {
+  console.log('Высокий уровень достатка');
 } else {
-  console.log('Correct!');
-}
+  console.log('Произошла ошибка');
+};
 
-(num == 50) ? console.log('Correct!') : console.log('Wrong!');
+// let i = 0;
+// do {
+//   let a = prompt ("Введите обязательную статью расходов в этом месяце", ""),
+//       b = prompt ("Во сколько обойдется?", "");
 
-switch (num) {
-  case num < 49:
-    console.log('Wrong!');
-    break;
-  case num > 100:
-    console.log('Thats more!');
-    break;
-  case num > 80:
-    console.log('Too more!');
-    break;
-  case 50:
-    console.log('Correct!');
-    break;
-  default:
-    console.log('Something going wrong');
-    break;
-}
+//     if ( typeof(a)==='string' && typeof(a) != null && typeof(b) != null && a != "" && b != "" && a.length < 50) {
+//       console.log ("done");
+//       appData.expenses[a] = b;
+//     } else {
+//       console.log ("bad result");
+//       i--;
+//     }
+
+//     i++;
+// }
+// while(i < 2);
+
+// let i = 0;
+// while (i < 2) {
+//     let a = prompt ("Введите обязательную статью расходов в этом месяце", ""),
+//         b = prompt ("Во сколько обойдется?", "");
+
+//     if ( typeof(a)==='string' && typeof(a) != null && typeof(b) != null && a != "" && b != "" && a.length < 50) {
+//       console.log ("done");
+//       appData.expenses[a] = b;
+//     } else {
+//       console.log ("bad result");
+//       i--;
+//     }
+
+//     i++;
+// }
