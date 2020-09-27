@@ -1,4 +1,16 @@
 'use strict';
+
+/* -----  Релизация с вычислением накоплений через клик по кнопке  ----- */
+
+let savingsButton = document.querySelector(".button");
+
+function watchSavings() {
+  savingsButton.addEventListener("click", checkSavings);
+};
+watchSavings();
+
+/* -----  ----- */
+
 let money, time;
 
 function start() {
@@ -17,7 +29,7 @@ let appData = {
   expenses: {},
   optionalExpenses: {},
   income: [],
-  savings: false
+  savings: true
 };
 
 function chooseExpenses() {
@@ -50,3 +62,15 @@ if (appData.moneyPerDay < 100) {
 } else {
   console.log('Произошла ошибка');
 };
+
+
+
+function checkSavings() {
+  if (appData.savings == true) {
+    let save = +prompt("Какова сумма накоплений?"),
+        percent = +prompt("Под какой процент");
+
+    appData.monthIncome = save/100/12*percent;
+    alert("Доход в месяц с вашего дипозита: " + appData.monthIncome.toFixed(2));
+  }
+}
