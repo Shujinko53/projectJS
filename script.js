@@ -22,7 +22,7 @@ function start() {
     money = +prompt("Ваш бюджет на месяц?", '');
   }
 };
-start();
+// start();
 
 let appData = {
   budget: money,
@@ -74,12 +74,27 @@ let appData = {
     for (let i = 1; i <= 3; i++) {
       let questionOptExpenses = prompt("Статья необязательных расходов?");
       appData.optionalExpenses[i] = questionOptExpenses;
+      console.log(appData.optionalExpenses);
     }
   },
   chooseIncome: function() {
-    let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
-    appData.income = items.split(', ');
-    appData.income.push(prompt('Может что-то еще?'));
-    appData.income.sort();
+    let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", "");
+
+    if (typeof(items) != "string" || items === "" || typeof(items) === null) {
+        alert("Вы ввели некорректные данные или не ввели их вовсе");
+    } else {
+        appData.income = items.split(", ");
+        appData.income.push(prompt("Может что-то еще?"));
+        appData.income.sort();
+    }
+
+    appData.income.forEach(function(itemOfArray, i) {
+      alert("Способы доп. заработка: " + (i+1) + " - " + itemOfArray);
+    });
+
   }
 };
+
+for (let key in appData) {
+  console.log("Наша программа включает в себя данные: " + key + " - " + appData[key]);
+}
