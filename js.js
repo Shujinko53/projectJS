@@ -63,8 +63,11 @@
 //   console.log(key);
 // }
 
-let answer = prompt("", ""),
-    arr = [];
+// let answer = prompt("", ""),
+//     arr = [];
 
-arr = answer.split(',');
-console.log(arr);
+// arr = answer.split(',');
+// console.log(arr);
+
+// console.log([] + false); // "false"
+
