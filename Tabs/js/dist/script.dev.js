@@ -36,13 +36,13 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }); // Timer
 
-  var deadline = '2020-11-04';
+  var deadline = '2020-11-06';
 
   function getTimeRemaining(endtime) {
     var t = Date.parse(deadline) - Date.parse(new Date()),
         seconds = Math.floor(t / 1000 % 60),
         minutes = Math.floor(t / 1000 / 60 % 60),
-        hours = Math.floor(t / 1000 / 60 / 60 % 24 - 2);
+        hours = Math.floor(t / 1000 / 60 / 60 % 24 - 3);
     return {
       'total': t,
       'hours': hours,
@@ -60,12 +60,25 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function updateClock() {
       var t = getTimeRemaining(endtime);
-      hours.textContent = t.hours;
-      minutes.textContent = t.minutes;
-      seconds.textContent = t.seconds;
+
+      function addZero(num) {
+        if (num < 10) {
+          return '0' + num;
+        } else {
+          return num;
+        }
+      }
+
+      ;
+      hours.textContent = addZero(t.hours);
+      minutes.textContent = addZero(t.minutes);
+      seconds.textContent = addZero(t.seconds);
 
       if (t.total <= 0) {
         clearInterval(timeInterval);
+        hours.textContent = '00';
+        minutes.textContent = '00';
+        seconds.textContent = '00';
       }
     }
   }
