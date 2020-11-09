@@ -91,3 +91,25 @@
     любой символ, кроме перевода строки \n.
 
 */
+
+// let age = document.getElementById('age');
+
+// function showUser(surname, name) {
+//     alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+// }
+
+// showUser.apply(age, ['Smith', 'John']);
+
+// function User(name, age) {
+//     this.name = name;
+//     this.age = age;
+//     this.human = true;
+//     this.hello = function() {
+//         console.log('Hello! ' + this.name);
+//     }
+// };
+
+
+// let ivan = new User('Ivan', 25);
+
+// console.log(ivan.hello);
