@@ -163,22 +163,70 @@
 
 // The training on creating the class
 
-class Options {
-    constructor(height, width, bg, fontSize, textAlign) {
-        this.height = height;
-        this.width = width;
-        this.bg = bg;
-        this.fontSize = fontSize;
-        this.textAlign = textAlign;
-    }
-    createDiv() {
-        let elem = document.createElement('div');
-        document.body.appendChild(elem);
-        let param = `height:${this.height}px; width:${this.width}px; background-color:${this.bg}; font-size:${this.fontSize}px; text-align:${this.textAlign}`;
-        elem.style.cssText = param;
-    }
-}
+// class Options {
+//     constructor(height, width, bg, fontSize, textAlign) {
+//         this.height = height;
+//         this.width = width;
+//         this.bg = bg;
+//         this.fontSize = fontSize;
+//         this.textAlign = textAlign;
+//     }
+//     createDiv() {
+//         let elem = document.createElement('div');
+//         document.body.appendChild(elem);
+//         let param = `height:${this.height}px; width:${this.width}px; background-color:${this.bg}; font-size:${this.fontSize}px; text-align:${this.textAlign}`;
+//         elem.style.cssText = param;
+//     }
+// }
 
-const item = new Options(300, 500, "#d3d3d3", 14, "center");
+// const item = new Options(300, 500, "#d3d3d3", 14, "center");
 
-item.createDiv();
+// item.createDiv();
+
+/* JSON 
+    1.отправка на сервер
+    2.прием данных с сервера
+*/
+
+// let options = {
+//     height: 150,
+//     width: 260,
+//     background: 'red',
+//     font: {
+//         size: '16px',
+//         color: '#fff'
+//     }
+// };
+
+// console.log(JSON.stringify(options));
+// console.log(JSON.parse(JSON.stringify(options)));
+
+/*
+
+let inputRub = document.getElementById('rub');
+let inputUsd = document.getElementById('usd');
+
+inputRub.addEventListener('input', () => {
+    let request = new XMLHttpRequest();
+
+    // request.open(method, url, async, login, pass)
+    request.open('GET', 'js/current.json');
+    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    request.send();
+
+    //status
+    //statusText
+    //responseText / response
+    //readyState
+
+    request.addEventListener('readystatechange', function() {
+        if (request.readyState === 4 && request.status == 200) {
+            let data = JSON.parse(request.response);
+
+            inputUsd.value = inputRub.value / data.usd;
+        } else {
+            inputUsd.value = "Что-то пошло не так!";
+        }
+    });
+});
+ */
