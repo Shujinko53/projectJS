@@ -155,4 +155,46 @@ window.addEventListener('DOMContentLoaded', function() {
             input[i].value = '';
         }
     });
+
+    let contactForm = document.getElementById('form'),
+        contactInputs = contactForm.getElementsByTagName('input'),
+        formMessage = document.createElement('div');
+
+    formMessage.classList.add('status');
+
+    contactForm.addEventListener('submit', function(evt) {
+        evt.preventDefault();
+
+        contactForm.appendChild(formMessage);
+
+        let request = new XMLHttpRequest();
+        request.open('POST', 'server.php');
+        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+
+        let formData = new FormData(contactForm);
+
+        let obj = {};
+
+        formData.forEach(function(value, key) {
+            formData[key] = value;
+        })
+
+        let json = JSON.stringify(obj);
+
+        request.send(json);
+
+        request.addEventListener('readystatechange', function() {
+            if (this.readyState < 4) {
+                formMessage.innerHTML = messages.loading;
+            } else if (this.readyState == 4 && this.status == 200) {
+                formMessage.innerHTML = messages.success;
+            } else {
+                formMessage.innerHTML = messages.failure
+            }
+        });
+
+        for (let i = 0; i < contactInputs.length; i++) {
+            contactInputs[i].value = '';
+        }
+    });
 });
